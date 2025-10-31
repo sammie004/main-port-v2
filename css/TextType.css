@@ -1,0 +1,27 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+.text-type__content {
+  font-size: 2rem; /* adjust as you like */
+  font-weight: bold;
+   display: inline-block;
+  font-size: 2rem;
+  line-height: 1.4;
+  max-width: 26ch; /* about 5–6 words per line */
+  word-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+}
+

@@ -1,0 +1,163 @@
+/* === GLOBAL RESETS === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* === FIXED AOS ANIMATION BEHAVIOR === */
+[data-aos] {
+  will-change: transform, opacity;
+  transform-origin: center;
+  backface-visibility: hidden;
+  transition-property: transform, opacity;
+  transition-duration: 0.8s;
+  transition-timing-function: ease-out;
+}
+
+/* Prevent AOS from forcing hidden overflow that breaks layout */
+[data-aos].aos-animate {
+  overflow: visible !important;
+}
+
+/* === HERO SECTION === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 4vw 2vw; /* responsive padding */
+}
+
+/* Background pattern layer */
+.squares-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* behind content */
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: black;
+  max-width: 90vw; /* keep text inside screen */
+  padding: 2vw;
+}
+
+/* === SCROLL INDICATOR === */
+.scroll {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: black;
+  opacity: 0.9;
+  animation: fadeIn 2s ease forwards, bounce 1.5s infinite;
+  z-index: 2;
+}
+
+.down {
+  font-size: 1.4rem;
+  margin-left: 5px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+    background: transparent;
+  }
+  50% {
+    transform: translate(-50%, 8px);
+    background: transparent;
+  }
+}
+
+/* === CONTACT FIX === */
+.contact {
+  z-index: 999;
+}
+
+/* === ABOUT SECTION === */
+.about {
+  background-color: black;
+  color: white;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 5vw 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* === GENERAL SECTION LAYOUT === */
+.section {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  scroll-snap-align: start;
+  padding: 5vw 3vw;
+  overflow: hidden;
+}
+
+.projects {
+  overflow-y: hidden;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 1024px) {
+  .hero-content {
+    max-width: 95vw;
+  }
+  .scroll {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 6vw 3vw;
+  }
+  .hero-content {
+    font-size: 0.95rem;
+    padding: 3vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 8vw 4vw;
+  }
+  .hero-content {
+    font-size: 0.9rem;
+  }
+  .scroll {
+    bottom: 15px;
+    font-size: 0.85rem;
+  }
+}

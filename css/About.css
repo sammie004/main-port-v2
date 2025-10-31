@@ -1,0 +1,250 @@
+/* === BASE STYLING === */
+.about-section {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #000 70%, #0a0a0a 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* === WRAPPER === */
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 2;
+}
+
+/* === LEFT SIDE: PROFILE === */
+.profile-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-side img {
+  width: 80%;
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-side img:hover {
+  transform: scale(1.05);
+}
+
+/* === RIGHT SIDE: ABOUT CONTENT === */
+.about-content {
+  flex: 1.3;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 30px rgba(255, 255, 255, 0.1);
+}
+
+/* === HEADINGS === */
+.about-content h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.about-content h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 60px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* === PARAGRAPHS === */
+.about-content p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.2rem;
+}
+
+/* === STRONG TEXT === */
+.about-content strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* === QUOTE === */
+.closing {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* === WHIMSICAL ELEMENTS === */
+.arrow {
+  display: inline-block;
+  color: #ffcc70;
+  margin-left: 6px;
+  font-size: 1.3rem;
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(10deg) translateY(-3px);
+  }
+}
+
+.whimsical-swirl {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: floaty 6s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.whimsical-swirl:nth-child(1) {
+  top: 10%;
+  left: 10%;
+}
+
+.whimsical-swirl:nth-child(2) {
+  bottom: 15%;
+  right: 15%;
+}
+
+@keyframes floaty {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-20px) rotate(15deg);
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .about-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .about-content {
+    padding: 2.5rem 2rem;
+  }
+
+  .about-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .about-section {
+    padding: 3rem 1.2rem;
+  }
+
+  .about-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-content h1 {
+    font-size: 2rem;
+  }
+
+  .about-content h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .about-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .profile-side img {
+    width: 70%;
+    max-width: 220px;
+  }
+
+  .arrow {
+    font-size: 1.1rem;
+  }
+}
+
+/* Very small screens (320px and below) */
+@media (max-width: 400px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+
+  .about-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .about-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .about-content p {
+    font-size: 0.9rem;
+  }
+
+  .profile-side img {
+    width: 60%;
+  }
+}
+
+/* Ultra-wide screens (over 1600px) */
+@media (min-width: 1600px) {
+  .about-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .about-content p {
+    font-size: 1.2rem;
+  }
+
+  .profile-side img {
+    max-width: 400px;
+  }
+}
