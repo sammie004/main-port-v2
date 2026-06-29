@@ -161,7 +161,7 @@ export default function App () {
         {/* Stats — right side */}
         <aside className='hero__stats' aria-label='Quick stats'>
           <div className='stat'>
-            <span className='stat__n'>3<span>+</span></span>
+            <span className='stat__n'>2<span>+</span></span>
             <span className='stat__l'>years shipping</span>
           </div>
           <div className='stat'>
