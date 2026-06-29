@@ -1,284 +1,251 @@
-/* === DESIGN TOKENS (scoped) === */
-.skills-page {
-  --skills-bg-a: #060608;
-  --skills-bg-b: #0c0c12;
-  --skills-surface: rgba(255, 255, 255, 0.04);
-  --skills-border: rgba(255, 255, 255, 0.09);
-  --skills-accent: #00bfa6;
-  --skills-accent-warm: #ffcc70;
-  --skills-text: #f3f3f6;
-  --skills-text-muted: #9595a1;
-  --skills-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo,
-    Consolas, monospace;
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap');
 
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+.skills-page {
+  background: var(--bg, #060608);
+  color: var(--fg, #ededed);
   min-height: 100vh;
-  background: radial-gradient(
-    circle at 70% 80%,
-    var(--skills-bg-b) 0%,
-    var(--skills-bg-a) 65%
-  );
-  color: var(--skills-text);
+  padding: 80px 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
 }
 
-/* === HEADER === */
+/* ============================================================
+   HEADER
+   ============================================================ */
 .skills-eyebrow {
-  font-family: var(--skills-mono);
-  font-size: 0.8rem;
-  font-style: italic;
-  color: var(--skills-text-muted);
-  margin-bottom: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--accent, #4ade80);
+  font-weight: 500;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skills-eyebrow::before,
+.skills-eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent, #4ade80);
+  opacity: 0.4;
 }
 
 .skills-title {
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--skills-text);
+  color: var(--fg, #ededed);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
   text-align: center;
+}
+
+.skills-title__accent {
+  color: var(--accent, #4ade80);
 }
 
 .skills-subtitle {
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  max-width: 600px;
+  font-size: 13px;
+  color: var(--muted, #444);
+  max-width: 400px;
   text-align: center;
-  margin-bottom: 60px;
-  color: var(--skills-text-muted);
-  line-height: 1.6;
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 56px;
 }
 
-/* === SKILLS GRID === */
+/* ============================================================
+   SKILLS GRID  — ruled table feel
+   ============================================================ */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border, #1a1a1f);
+  border: 1px solid var(--border, #1a1a1f);
+  border-radius: 12px;
+  overflow: hidden;
   width: 100%;
-  max-width: 900px;
-  justify-items: center;
-  padding: 0 10px;
+  max-width: 820px;
+  margin-bottom: 72px;
 }
 
-/* === SKILL CARD === */
-.skill-card {
-  background: var(--skills-surface);
-  border: 1px solid var(--skills-border);
-  border-radius: 18px;
-  padding: 30px;
+/* ============================================================
+   SKILL CELL
+   ============================================================ */
+.sk-cell {
+  background: var(--bg, #060608);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.2s ease;
+}
+
+.sk-cell:hover {
+  background: #0d0d10;
+}
+
+.sk-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sk-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--fg, #ededed);
+  letter-spacing: -0.01em;
+}
+
+.sk-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent, #4ade80);
+  font-weight: 700;
+}
+
+/* Bar track */
+.sk-bar-bg {
+  height: 2px;
+  background: var(--border, #1a1a1f);
+  border-radius: 2px;
   width: 100%;
-  max-width: 220px;
-  text-align: center;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    border-color 0.3s ease;
+  overflow: hidden;
 }
 
-.skill-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0, 191, 166, 0.4);
-  box-shadow: 0 12px 30px rgba(0, 191, 166, 0.15);
+/* Bar fill — width driven by inline style + transition */
+.sk-bar {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent, #4ade80);
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* === GAUGE === */
-.gauge-container {
-  width: clamp(100px, 20vw, 160px);
-  height: clamp(100px, 20vw, 160px);
-  margin: 0 auto 20px;
-  position: relative;
+.sk-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--dim, #222);
+  letter-spacing: 0.06em;
 }
 
-.gauge {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-
-.gauge-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 3.5;
-}
-
-.gauge-progress {
-  fill: none;
-  stroke: var(--skills-accent);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  transition: stroke-dasharray 1.2s ease-out;
-}
-
-.gauge-text {
-  font-family: var(--skills-mono);
-  font-size: 0.32em;
-  fill: var(--skills-text);
-  text-anchor: middle;
-  dominant-baseline: middle;
-  font-weight: 600;
-  transform: rotate(90deg);
-  transform-origin: 50% 50%;
-}
-
-/* === SKILL NAME === */
-.skill-name {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 600;
-  color: var(--skills-text);
-  margin: 0;
-}
-
-/* === TECH STACK SECTION === */
+/* ============================================================
+   TECH STACK
+   ============================================================ */
 .tech-stack {
-  margin-top: 90px;
-  text-align: center;
   width: 100%;
+  max-width: 820px;
+  text-align: center;
 }
 
 .tech-stack__title {
-  font-family: var(--skills-mono);
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
   font-weight: 500;
-  margin-bottom: 30px;
-  color: var(--skills-text);
+  color: var(--fg, #ededed);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
 }
 
-.tech-stack__title .tok-kw {
-  color: var(--skills-accent);
-  font-weight: 600;
-}
+.tok-kw  { color: var(--accent, #4ade80); font-weight: 700; }
+.tok-op  { color: var(--muted, #444); }
+.tok-str { color: #fb923c; }
 
-/* === TECH LOGOS === */
 .tech-logos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(20px, 4vw, 36px);
-  padding: 0 10px;
+  gap: 8px;
 }
 
 .tech-logo {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
-  padding: 1rem 1.25rem;
-  border-radius: 14px;
-  background: var(--skills-surface);
-  border: 1px solid var(--skills-border);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted, #444);
+  padding: 8px 14px;
+  border: 1px solid var(--border, #1a1a1f);
+  border-radius: 6px;
+  background: var(--bg, #060608);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  letter-spacing: 0.04em;
+  cursor: default;
 }
 
 .tech-logo img {
-  width: clamp(40px, 5vw, 52px);
-  height: clamp(40px, 5vw, 52px);
+  width: 18px;
+  height: 18px;
   object-fit: contain;
-  filter: grayscale(60%) brightness(1.4);
-  transition: filter 0.4s ease;
+  filter: grayscale(60%) brightness(1.3);
+  transition: filter 0.2s ease;
 }
 
 .tech-logo:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 191, 166, 0.4);
+  border-color: var(--accent-border, rgba(74, 222, 128, 0.25));
+  color: var(--accent, #4ade80);
+  background: var(--accent-dim, rgba(74, 222, 128, 0.07));
 }
 
 .tech-logo:hover img {
-  filter: grayscale(0%) brightness(1);
+  filter: none;
 }
 
-.tech-logo p {
-  margin-top: 10px;
-  font-family: var(--skills-mono);
-  font-size: clamp(0.72rem, 1.1vw, 0.85rem);
-  color: var(--skills-text-muted);
-}
-
-/* === RESPONSIVENESS === */
-@media (max-width: 1024px) {
-  .skills-page {
-    padding: 60px 30px;
-  }
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
   .skills-grid {
-    gap: 32px;
-  }
-  .tech-stack {
-    margin-top: 70px;
-  }
-}
-
-@media (max-width: 768px) {
-  .skills-page {
-    padding: 50px 20px;
-  }
-  .skills-grid {
-    gap: 28px;
-  }
-  .skill-card {
-    padding: 25px;
-    max-width: 180px;
-  }
-  .tech-logos {
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .skills-title {
-    font-size: 1.8rem;
+  .skills-page {
+    padding: 56px 5%;
   }
-  .skills-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 40px;
-  }
+
   .skills-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 48px;
   }
-  .skill-card {
-    padding: 20px;
-    max-width: 160px;
+
+  .sk-cell {
+    padding: 20px 16px;
   }
-  .gauge-container {
-    width: 100px;
-    height: 100px;
-  }
-  .tech-logos {
-    gap: 14px;
-  }
-  .tech-logo img {
-    width: 40px;
-    height: 40px;
-  }
-  .tech-stack {
-    margin-top: 50px;
+
+  .sk-name {
+    font-size: 0.7rem;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
   .skills-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .skill-card {
-    max-width: 90%;
-  }
-  .tech-logo img {
-    width: 36px;
-    height: 36px;
   }
 }
 
-/* === MOTION SAFETY === */
+/* ============================================================
+   MOTION SAFETY
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .skill-card,
-  .tech-logo {
-    transition: none;
-  }
-  .skill-card:hover,
-  .tech-logo:hover {
-    transform: none;
-  }
+  .sk-bar      { transition: none; }
+  .tech-logo   { transition: none; }
+  .sk-cell     { transition: none; }
 }

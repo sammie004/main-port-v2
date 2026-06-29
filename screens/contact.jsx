@@ -10,18 +10,13 @@ export default function ContactSection () {
 
       {/* ── Header ── */}
       <div className='contact-top'>
-        <div className='contact-kicker'>
-          <span className='contact-kicker-line' />
-          <span className='contact-kicker-text'>Get in touch</span>
-          <span className='contact-kicker-line' />
-        </div>
+        <p className='contact-eyebrow'>contact()</p>
         <h1 className='contact-title'>
-          Let's build something<br />
-          <em>worth remembering</em>
+          let's build something<span className='contact-title__dot'>.</span>
         </h1>
         <p className='contact-subtitle'>
-          Open to freelance work, collaborations, and interesting problems.
-          Drop a message and I'll get back to you within a day.
+          Open to freelance, collabs, and interesting problems.
+          Usually replies within 24 hrs.
         </p>
       </div>
 
@@ -32,34 +27,34 @@ export default function ContactSection () {
         <div className='contact-form-col'>
           <form onSubmit={handleSubmit}>
             <div className='form-row'>
-              <label className='form-label' htmlFor='name'>Name</label>
-              <input id='name' type='text' placeholder='Your full name' required />
+              <label className='form-label' htmlFor='name'>name</label>
+              <input id='name' type='text' placeholder='your_full_name' required />
             </div>
 
             <div className='form-row'>
-              <label className='form-label' htmlFor='email'>Email</label>
+              <label className='form-label' htmlFor='email'>email</label>
               <input id='email' type='email' placeholder='you@example.com' required />
             </div>
 
             <div className='form-row'>
-              <label className='form-label' htmlFor='subject'>Subject</label>
-              <input id='subject' type='text' placeholder="What's this about?" />
+              <label className='form-label' htmlFor='subject'>subject</label>
+              <input id='subject' type='text' placeholder="// what's this about?" />
             </div>
 
             <div className='form-row'>
-              <label className='form-label' htmlFor='message'>Message</label>
+              <label className='form-label' htmlFor='message'>message</label>
               <textarea
                 id='message'
-                rows={5}
-                placeholder='Tell me about your project, idea, or question…'
+                rows={4}
+                placeholder='// tell me about your project...'
                 required
               />
             </div>
 
             <div className='form-footer'>
-              <span className='form-note'>Usually replies within 24 hrs</span>
+              <span className='form-note'>// replies within 24 hrs</span>
               <button className='contact-submit' type='submit'>
-                Send <FaArrowUpRightFromSquare size={12} />
+                send() <FaArrowUpRightFromSquare size={11} />
               </button>
             </div>
           </form>
@@ -67,8 +62,8 @@ export default function ContactSection () {
 
         {/* Right: info */}
         <div className='contact-info-col'>
-          <div>
-            <p className='contact-note-tag'>A note</p>
+          <div className='contact-note'>
+            <p className='contact-note-tag'>// a note</p>
             <p className='contact-note-quote'>
               "The best work comes from<br />
               <span>genuine conversation."</span>
@@ -79,46 +74,33 @@ export default function ContactSection () {
 
           <div className='contact-detail-rows'>
             <div className='detail-row'>
-              <span className='detail-label'>Email</span>
+              <span className='detail-label'>email</span>
               <a className='detail-value' href='mailto:samzie12346@gmail.com'>
                 samzie12346@gmail.com <FaArrowUpRightFromSquare size={10} />
               </a>
             </div>
             <div className='detail-row'>
-              <span className='detail-label'>Location</span>
-              <span className='detail-value'>Lagos, Nigeria</span>
+              <span className='detail-label'>location</span>
+              <span className='detail-value'>Lagos, NG</span>
             </div>
             <div className='detail-row'>
-              <span className='detail-label'>Availability</span>
-              <span className='detail-value detail-value--available'><span className='pill'></span>Open to work</span>
+              <span className='detail-label'>status</span>
+              <span className='detail-value detail-value--available'>
+                <span className='status-dot' aria-hidden='true' />
+                open to work
+              </span>
             </div>
           </div>
 
           <div className='contact-socials'>
-            <a
-              className='social-icon'
-              href='https://github.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='GitHub'
-            >
-              <FaGithub size={16} />
+            <a className='social-icon' href='https://github.com/' target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
+              <FaGithub size={15} />
             </a>
-            <a
-              className='social-icon'
-              href='https://linkedin.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='LinkedIn'
-            >
-              <FaLinkedin size={16} />
+            <a className='social-icon' href='https://linkedin.com/' target='_blank' rel='noopener noreferrer' aria-label='LinkedIn'>
+              <FaLinkedin size={15} />
             </a>
-            <a
-              className='social-icon'
-              href='mailto:hello@yourname.dev'
-              aria-label='Email'
-            >
-              <FaEnvelope size={16} />
+            <a className='social-icon' href='mailto:samzie12346@gmail.com' aria-label='Email'>
+              <FaEnvelope size={15} />
             </a>
           </div>
         </div>

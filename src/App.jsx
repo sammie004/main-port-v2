@@ -2,35 +2,49 @@ import { useState, useEffect } from 'react'
 import TextType from '../components/type'
 import About from '../screens/about'
 import SkillsSection from '../screens/skills'
-import Squares from '../components/back'
+import DotGrid from '../components/dotgrid'
 import ProjectsSection from '../screens/projects'
 import ContactSection from '../screens/contact'
 import './App.css'
 
 const NAV_LINKS = [
-  { label: 'about()',    href: '#about' },
-  { label: 'skills[]',  href: '#skills' },
-  { label: 'projects{}',href: '#projects' },
-  { label: 'contact()', href: '#contact' },
+  { label: 'about()',     href: '#about'    },
+  { label: 'skills[]',   href: '#skills'   },
+  { label: 'projects{}', href: '#projects' },
+  { label: 'contact()',  href: '#contact'  },
 ]
 
 const CHIPS = [
-  { label: 'React',       hi: true },
-  { label: 'Node.js',     hi: true },
-  { label: 'UI / UX',     hi: true },
+  { label: 'React',       hi: true  },
+  { label: 'Node.js',     hi: true  },
+  { label: 'Ships Fast™', hi: true  },
   { label: 'MySQL',       hi: false },
   { label: 'Figma',       hi: false },
   { label: 'TypeScript',  hi: false },
 ]
 
+/* Status-bar ticker — the one loud element on an otherwise quiet page */
+const TICKER_ITEMS = [
+  'SHIPS FAST',
+  'FULL-STACK ENERGY',
+  '10X COMMITS',
+  "MOVE FAST, DON'T BREAK PROD",
+  'ASYNC BY DEFAULT',
+  'TOUCHED GRASS: PENDING',
+  'COFFEE → CODE',
+  'OPEN TO WORK',
+]
+
 export default function App () {
-  const [theme, setTheme]     = useState('dark')
+  const [theme, setTheme]       = useState('dark')
   const [scrolled, setScrolled] = useState(false)
 
+  /* Apply theme attribute to <html> — every CSS var picks it up */
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
+  /* Compact nav on scroll */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -40,9 +54,9 @@ export default function App () {
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
 
   return (
-    <div className={`app theme-${theme}`}>
+    <div className='app'>
 
-      {/* ── Nav ── */}
+      {/* ── Navbar ── */}
       <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}`}>
         <span className='nav-logo'>
           ndih<span className='nav-logo__dot'>_</span>samuel
@@ -70,41 +84,49 @@ export default function App () {
 
       {/* ── Hero ── */}
       <section className='hero' id='home'>
-        {/* Squares bg — untouched, sits behind everything */}
-        <Squares
-          direction='diagonal'
-          speed={0.5}
-          borderColor='var(--sq-border)'
-          hoverFillColor='var(--sq-hover)'
-          squareSize={56}
-          className='hero__squares'
-        />
+        {/* Buzzword status ticker — infinite scroll, pauses on hover */}
+        <div className='hero__ticker' aria-hidden='true'>
+          <div className='hero__ticker-track'>
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+              <span className='hero__ticker-item' key={i}>{item}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* Interactive dot-grid background */}
+        <DotGrid theme={theme} className='hero__bg' />
 
         <div className='hero__content'>
+          {/* Status tag */}
           <div className='hero__tag'>
             <span className='hero__tag-dot' aria-hidden='true' />
-            available for work
+            availability: true
           </div>
 
+          {/* Name */}
           <h1 className='hero__name'>
             Ndih<br />Samuel<span className='hero__accent'>.</span>
           </h1>
 
-          <p className='hero__typewriter'>
+          {/*
+            Typewriter — height is FIXED via CSS so no layout shift.
+            The container never changes size regardless of string length.
+          */}
+          <div className='hero__typewriter'>
             <TextType
               text={[
-                'full-stack developer',
-                'UI/UX designer',
-                'product thinker',
+                'full-stack & full-send_',
+                'ships fast, fixes faster_',
+                'turns coffee into commits_',
                 'open to work →',
               ]}
               typingSpeed={65}
               pauseDuration={1400}
-              showCursor
-              cursorCharacter='_'
+              showCursor={false}   /* cursor baked into strings as _ */
             />
-          </p>
+          </div>
 
+          {/* Tech chips */}
           <div className='hero__chips'>
             {CHIPS.map(({ label, hi }) => (
               <span key={label} className={`chip${hi ? ' chip--hi' : ''}`}>
@@ -113,13 +135,14 @@ export default function App () {
             ))}
           </div>
 
+          {/* CTAs */}
           <div className='hero__actions'>
             <a className='btn btn--primary' href='#projects'>view projects →</a>
-            <a className='btn btn--ghost'   href='#contact'>get in touch</a>
+            <a className='btn btn--ghost'   href='#contact'>$ say hello</a>
           </div>
         </div>
 
-        {/* Side stats */}
+        {/* Stats — right side */}
         <aside className='hero__stats' aria-label='Quick stats'>
           <div className='stat'>
             <span className='stat__n'>3<span>+</span></span>
@@ -127,7 +150,7 @@ export default function App () {
           </div>
           <div className='stat'>
             <span className='stat__n'>10<span>+</span></span>
-            <span className='stat__l'>projects built</span>
+            <span className='stat__l'>projects shipped</span>
           </div>
           <div className='stat'>
             <span className='stat__n'>∞</span>
@@ -138,16 +161,16 @@ export default function App () {
         <span className='hero__location'>// Lagos, NG · open to remote</span>
 
         <div className='hero__scroll' aria-hidden='true'>
-          <span className='hero__scroll-line' />
+          {/* <span className='hero__scroll-line' /> */}
           <span className='hero__scroll-label'>scroll</span>
         </div>
       </section>
 
-      {/* ── Sections ── */}
-      <section className='page-section' id='about'>   <About />          </section>
-      <section className='page-section' id='skills'>  <SkillsSection />  </section>
-      <section className='page-section' id='projects'><ProjectsSection /></section>
-      <section className='page-section' id='contact'> <ContactSection /> </section>
+      {/* ── Page sections ── */}
+      <section className='page-section' id='about'>    <About />           </section>
+      <section className='page-section' id='skills'>   <SkillsSection />   </section>
+      <section className='page-section' id='projects'> <ProjectsSection /> </section>
+      <section className='page-section' id='contact'>  <ContactSection />  </section>
     </div>
   )
 }

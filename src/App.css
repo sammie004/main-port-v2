@@ -1,71 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ============================================================
-   THEME TOKENS
+   THEME TOKENS — on <html> so every descendant reads them
    ============================================================ */
-:root {
-  /* Dark theme (default) */
-  --bg: #060608;
-  --bg-raised: #0d0d10;
-  --fg: #ededed;
-  --muted: #444;
-  --dim: #222;
-  --border: #1a1a1f;
-  --accent: #4ade80;
-  --accent-dim: rgba(74, 222, 128, 0.08);
-  --accent-border: rgba(74, 222, 128, 0.3);
-  --sq-border: #111116;
-  --sq-hover: #0f0f13;
-  --mono: 'JetBrains Mono', monospace;
+:root,
+html[data-theme='dark'] {
+  --bg:           #060608;
+  --bg-raised:    #0d0d10;
+  --fg:           #ededed;         /* ← body text, toggled */
+  --fg-inv:       #060608;         /* inverse for filled buttons */
+  --muted:        #555;
+  --dim:          #252525;
+  --border:       #1a1a1f;
+  --accent:       #4ade80;
+  --accent-dim:   rgba(74,222,128,.07);
+  --accent-border:rgba(74,222,128,.28);
+  --sq-border:    #111116;
+  --sq-hover:     #0f0f13;
 }
 
-html[data-theme="light"] {
-  --bg: #f5f5f7;
-  --bg-raised: #ffffff;
-  --fg: #0a0a0a;
-  --muted: #888;
-  --dim: #bbb;
-  --border: #e0e0e0;
-  --accent: #16a34a;
-  --accent-dim: rgba(22, 163, 74, 0.08);
-  --accent-border: rgba(22, 163, 74, 0.35);
-  --sq-border: #e8e8ea;
-  --sq-hover: #f0f0f2;
+html[data-theme='light'] {
+  --bg:           #f4f4f6;
+  --bg-raised:    #ffffff;
+  --fg:           #0d0d0f;         /* ← flips on toggle */
+  --fg-inv:       #f4f4f6;
+  --muted:        #777;
+  --dim:          #c0c0c8;
+  --border:       #dddde4;
+  --accent:       #16a34a;
+  --accent-dim:   rgba(22,163,74,.07);
+  --accent-border:rgba(22,163,74,.32);
+  --sq-border:    #e4e4ea;
+  --sq-hover:     #ebebf0;
 }
 
 /* ============================================================
    GLOBAL RESET
    ============================================================ */
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*,*::before,*::after { box-sizing: border-box; }
 
 html {
-  /* scroll-behavior: smooth; */
   overflow-x: hidden;
+  /* color transition on the root so text recolors smoothly */
+  transition: color 0.3s ease;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   overflow-x: hidden;
-  width: 100vw;
-  /* overscroll-behavior: none; */
+  /* NO overflow:hidden — that kills scroll */
 }
 
 /* ============================================================
    APP SHELL
+   All colour comes from CSS vars so the toggle propagates
+   everywhere with zero JS beyond the data-theme flip.
    ============================================================ */
 .app {
   background: var(--bg);
-  color: var(--fg);
+  color: var(--fg);                /* ← this is the key line */
   font-family: 'Inter', sans-serif;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
   min-height: 100vh;
 }
 
 /* ============================================================
    NAVBAR
+   pointer-events: auto on the element, nothing below it blocks scroll.
    ============================================================ */
 .site-nav {
   position: fixed;
@@ -78,51 +79,48 @@ body {
   justify-content: space-between;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  transition: background 0.3s, border-color 0.3s, height 0.25s;
+  transition: background 0.3s ease, border-color 0.3s ease, height 0.25s ease;
   pointer-events: auto;
 }
 
 .site-nav--scrolled {
   height: 48px;
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
-/* Logo */
 .nav-logo {
-  font-family: var(--mono);
-  font-size: 0.95rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--fg);
   letter-spacing: -0.02em;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .nav-logo__dot { color: var(--accent); }
 
-/* Links */
 .nav-links {
   display: flex;
   gap: 28px;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 
 .nav-link {
-  font-family: var(--mono);
-  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
   letter-spacing: 0.04em;
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.15s ease;
   pointer-events: auto;
 }
 
 .nav-link:hover { color: var(--fg); }
 
-/* Right side */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -130,11 +128,10 @@ body {
 }
 
 /* ============================================================
-   THEME TOGGLE
+   THEME TOGGLE BUTTON
    ============================================================ */
 .theme-toggle {
-  width: 32px;
-  height: 32px;
+  width: 32px; height: 32px;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: transparent;
@@ -144,7 +141,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s ease, color 0.15s ease;
   pointer-events: auto;
 }
 
@@ -153,11 +150,11 @@ body {
   color: var(--accent);
 }
 
-/* CTA */
+/* Hire CTA */
 .nav-cta {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.07em;
   padding: 7px 16px;
   border: 1px solid var(--accent);
   border-radius: 6px;
@@ -165,34 +162,97 @@ body {
   color: var(--accent);
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s ease, color 0.15s ease;
   pointer-events: auto;
 }
 
 .nav-cta:hover {
   background: var(--accent);
-  color: #060608;
+  color: var(--fg-inv);
 }
 
 /* ============================================================
    HERO
+   padding-top accounts for the fixed nav (56px) + the ticker
+   bar pinned directly beneath it (32px).
    ============================================================ */
 .hero {
   position: relative;
   min-height: 100vh;
   width: 100%;
   padding: 0 5%;
-  padding-top: 56px;
+  padding-top: 88px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
   background: var(--bg);
+  transition: background 0.3s ease;
 }
 
-/* Squares sit absolutely behind everything — no pointer events */
-.hero__squares {
+/* ============================================================
+   TICKER — status-bar style buzzword marquee.
+   The one loud, self-aware element on the page; everything
+   else around it stays quiet. Pauses on hover.
+   ============================================================ */
+.hero__ticker {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  height: 32px;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.hero__ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee 24s linear infinite;
+}
+
+.hero__ticker:hover .hero__ticker-track {
+  animation-play-state: paused;
+}
+
+.hero__ticker-item {
+  position: relative;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  padding: 0 18px;
+  transition: color 0.3s ease;
+}
+
+.hero__ticker-item::after {
+  content: '◆';
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.45rem;
+  color: var(--muted);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Interactive dot-grid background — pointer-events:none so the
+   canvas never blocks scroll or clicks; the DotGrid component
+   listens for mouse position on .hero itself. */
+.hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -205,11 +265,11 @@ body {
   max-width: 640px;
 }
 
-/* "available" tag with blinking dot */
+/* "availability" pill */
 .hero__tag {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -219,40 +279,63 @@ body {
 
 .hero__tag-dot {
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--accent);
   animation: blink 1.4s ease-in-out infinite;
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.15; }
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.15; }
 }
 
 /* Name */
 .hero__name {
-  font-family: var(--mono);
+  font-family: 'JetBrains Mono', monospace;
   font-size: clamp(2.6rem, 7vw, 5.5rem);
   font-weight: 700;
   color: var(--fg);
   line-height: 1;
   letter-spacing: -0.03em;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
 }
 
 .hero__accent { color: var(--accent); }
 
-/* Typewriter line */
+/* ============================================================
+   TYPEWRITER — FIXED HEIGHT = NO LAYOUT SHIFT
+   The container is locked to exactly one line of mono text.
+   No matter how long or short the string, the box never resizes.
+   ============================================================ */
 .hero__typewriter {
-  font-family: var(--mono);
-  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
   color: var(--muted);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.01em;
   margin-bottom: 32px;
-  min-height: 1.8rem;
+
+  /* Fixed height = no layout shift */
+  height: 1.6em;
+  overflow: hidden;
+  white-space: nowrap;
+
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+/* Force every child the TextType component renders to
+   inherit the container colour — overrides any inline
+   or component-level colour the library sets. */
+.hero__typewriter *,
+.hero__typewriter span,
+.hero__typewriter p {
+  color: inherit !important;
+  font-family: inherit !important;
+  transition: color 0.3s ease;
 }
 
 /* Tech chips */
@@ -264,9 +347,9 @@ body {
 }
 
 .chip {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.04em;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.05em;
   padding: 5px 12px;
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -280,7 +363,7 @@ body {
   background: var(--accent-dim);
 }
 
-/* CTA row */
+/* CTA buttons */
 .hero__actions {
   display: flex;
   gap: 10px;
@@ -291,8 +374,8 @@ body {
    SHARED BUTTONS
    ============================================================ */
 .btn {
-  font-family: var(--mono);
-  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   padding: 11px 24px;
   border-radius: 6px;
@@ -300,13 +383,13 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
   border: none;
 }
 
 .btn--primary {
   background: var(--accent);
-  color: #060608;
+  color: var(--fg-inv);
   font-weight: 700;
 }
 
@@ -324,7 +407,7 @@ body {
 }
 
 /* ============================================================
-   HERO STATS (right side)
+   HERO STATS
    ============================================================ */
 .hero__stats {
   position: absolute;
@@ -345,21 +428,22 @@ body {
 }
 
 .stat__n {
-  font-family: var(--mono);
+  font-family: 'JetBrains Mono', monospace;
   font-size: 2rem;
   font-weight: 700;
   color: var(--fg);
   line-height: 1;
   letter-spacing: -0.03em;
+  transition: color 0.3s ease;
 }
 
 .stat__n span { color: var(--accent); }
 
 .stat__l {
-  font-family: var(--mono);
-  font-size: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
   color: var(--muted);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
@@ -368,12 +452,13 @@ body {
   position: absolute;
   bottom: 28px;
   left: 5%;
-  font-family: var(--mono);
-  font-size: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
   color: var(--dim);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   z-index: 1;
   pointer-events: none;
+  transition: color 0.3s ease;
 }
 
 /* Scroll indicator */
@@ -392,22 +477,34 @@ body {
 
 .hero__scroll-line {
   display: block;
-  width: 1px;
-  height: 36px;
+  width: 1px; height: 36px;
   background: var(--border);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.2; }
-  50%       { opacity: 0.8; }
+  0%,100% { opacity: 0.2; }
+  50%      { opacity: 0.9; }
 }
 
 .hero__scroll-label {
-  font-family: var(--mono);
-  font-size: 0.55rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
   color: var(--dim);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
+  animation: motion 1.5s ease-in-out infinite;
+}
+@keyframes motion {
+  0%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-4px);
+    color:rgb(225, 225, 230);
+  }
+  100%{
+    transform:translateY(0);
+  }
 }
 
 /* ============================================================
@@ -416,7 +513,7 @@ body {
 .page-section { width: 100%; }
 
 /* ============================================================
-   AOS
+   AOS — prevent overflow:hidden on animated elements
    ============================================================ */
 [data-aos] {
   will-change: transform, opacity;
@@ -429,6 +526,16 @@ body {
 [data-aos].aos-animate { overflow: visible !important; }
 
 /* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero__ticker-track { animation: none; }
+  .hero__tag-dot,
+  .hero__scroll-line,
+  .hero__scroll-label { animation: none; }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
@@ -437,12 +544,13 @@ body {
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
-
   .hero__name { font-size: clamp(2.2rem, 10vw, 3.5rem); }
 }
 
 @media (max-width: 480px) {
   .site-nav { padding: 0 4%; }
-  .hero { padding: 0 4%; padding-top: 56px; }
-  .btn { font-size: 0.65rem; padding: 10px 18px; }
+  .hero { padding: 0 4%; padding-top: 88px; }
+  .btn { font-size: 0.63rem; padding: 10px 18px; }
+  .hero__typewriter { font-size: 0.8rem; }
+  .hero__ticker-item { font-size: 0.55rem; padding: 0 14px; }
 }

@@ -7,33 +7,33 @@ import { FaGithub, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 const projects = [
   {
     number: '01',
-    tag: 'Full-stack',
+    tag: 'full-stack',
+    role: '// Developer',
     title: 'Result Upload Automation System',
     description:
       'A web-based solution that replaces manual paperwork with digital approvals — automating the result upload and multi-step sign-off workflow for university administrators.',
-    role: 'Developer',
     tech: ['Node.js', 'MySQL', 'HTML/CSS', 'JavaScript'],
     github: '#',
     demo: '#'
   },
   {
     number: '02',
-    tag: 'Product / Design',
+    tag: 'product / design',
+    role: '// PM & UI Designer',
     title: 'Event Management System',
     description:
       'Oversaw design and planning for an event scheduling and attendee management platform — coordinating between design and development teams from concept through delivery.',
-    role: 'Project Manager & UI Designer',
     tech: ['Figma', 'UI/UX Design', 'HTML/CSS', 'JavaScript'],
     github: '#',
     demo: '#'
   },
   {
     number: '03',
-    tag: 'Systems / IoT',
+    tag: 'systems / iot',
+    role: '// PM & System Designer',
     title: 'Ecobin — Smart Waste Management',
     description:
       'Led concept development and system architecture for an IoT-inspired smart waste solution — from sensor logic to backend design — focused on scalable, sustainable infrastructure.',
-    role: 'Project Manager & System Designer',
     tech: ['Node.js', 'HTML/CSS', 'IoT Concepts'],
     github: '#',
     demo: '#'
@@ -42,21 +42,20 @@ const projects = [
 
 export default function ProjectsSection () {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out',
-      once: true
-    })
+    AOS.init({ duration: 700, easing: 'ease-out', once: true })
   }, [])
 
   return (
     <section className='projects-section'>
+
       <div className='projects-header' data-aos='fade-up'>
-        <p className='projects-eyebrow'>Selected work</p>
-        <h1 className='projects-title'>Projects &amp; Builds</h1>
+        <p className='projects-eyebrow'>selected work</p>
+        <h1 className='projects-title'>
+          projects<span className='projects-title__accent'>{'{}'}</span>
+        </h1>
         <p className='projects-subtitle'>
-          A curated set of things I've engineered and led — from automation
-          systems to smart hardware concepts.
+          Things I've shipped, led, and broken — then fixed — across
+          full-stack dev and product design.
         </p>
       </div>
 
@@ -68,7 +67,7 @@ export default function ProjectsSection () {
             data-aos='fade-up'
             data-aos-delay={index * 80}
           >
-            {/* Left: number + vertical rule */}
+            {/* Left: index + rule */}
             <div className='project-left'>
               <span className='project-number'>{project.number}</span>
               <div className='project-rule' aria-hidden='true' />
@@ -85,10 +84,8 @@ export default function ProjectsSection () {
               <p className='project-description'>{project.description}</p>
 
               <div className='tech-stack'>
-                {project.tech.map((tech, i) => (
-                  <span key={i} className='tech-item'>
-                    {tech}
-                  </span>
+                {project.tech.map((t, i) => (
+                  <span key={i} className='tech-item'>{t}</span>
                 ))}
               </div>
 
@@ -99,8 +96,7 @@ export default function ProjectsSection () {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  <FaGithub />
-                  GitHub
+                  <FaGithub /> github
                 </a>
                 <a
                   href={project.demo}
@@ -108,8 +104,7 @@ export default function ProjectsSection () {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  Live demo
-                  <FaArrowUpRightFromSquare className='btn-icon' />
+                  live demo <FaArrowUpRightFromSquare className='btn-icon' />
                 </a>
               </div>
             </div>
@@ -124,9 +119,10 @@ export default function ProjectsSection () {
           target='_blank'
           rel='noopener noreferrer'
         >
-          More on GitHub →
+          // more on github →
         </a>
       </div>
+
     </section>
   )
 }
