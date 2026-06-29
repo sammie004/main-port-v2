@@ -1,249 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+/* ===== SECTION SHELL ===== */
 .projects-section {
-  background-color: #000;
-  color: #fff;
-  padding: 60px 5%;
-  font-family: 'Poppins', sans-serif;
+  background: #0a0a0a;
+  padding: 80px 5%;
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
-  overflow: hidden;/* Prevent horizontal scroll */
-  max-width: 100vw;
+  overflow: hidden;
 }
 
-/* === Title & Subtitle === */
-.projects-title {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 600;
+/* ===== HEADER ===== */
+.projects-header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 72px;
+}
+
+.projects-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c08a2e;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.projects-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #f0ece4;
+  line-height: 1.1;
+  margin-bottom: 14px;
 }
 
 .projects-subtitle {
-  text-align: center;
-  color: #aaa;
-  margin-bottom: 40px;
-  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  font-size: 14px;
+  color: #666;
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.75;
 }
 
-/* === Project Layout === */
+/* ===== GRID ===== */
 .projects-grid {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  width: 100%;
-  max-width: 1200px;
+  gap: 0;
+  max-width: 860px;
   margin: 0 auto;
-  overflow-x: hidden;
 }
 
+/* ===== PROJECT CARD ===== */
 .project-card {
-  display: flex;
-  flex-wrap: wrap; /* ✅ allows stacking on small screens */
-  align-items: flex-start;
-  justify-content: space-between;
-  background: #111;
-  border-radius: 20px;
-  padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  gap: 20px;
-  width: 100%;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  border-top: 0.5px solid #1e1e1e;
+  padding: 44px 0;
+  transition: border-top-color 0.3s ease;
+}
+
+.project-card:last-child {
+  border-bottom: 0.5px solid #1e1e1e;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+  border-top-color: #c08a2e;
 }
 
-/* === Image Section === */
-.project-image {
-  flex: 1 1 220px; /* ✅ flexible width */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  max-width: 100%;
+.project-card:hover .project-number {
+  color: #c08a2e;
 }
 
-.project-image img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  border-radius: 15px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+.project-card:hover .project-rule {
+  background: #c08a2e;
 }
 
-.project-image img:hover {
-  transform: scale(1.05);
+/* ===== LEFT COLUMN (NUMBER + RULE) ===== */
+.project-left {
+  padding-right: 24px;
 }
 
-/* === Content Section === */
+.project-number {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #2e2e2e;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding-top: 4px;
+}
+
+.project-rule {
+  width: 1px;
+  height: calc(100% - 28px);
+  background: #1e1e1e;
+  margin: 12px auto 0;
+  transition: background 0.3s ease;
+}
+
+/* ===== RIGHT COLUMN (CONTENT) ===== */
 .project-content {
-  flex: 2 1 300px;
-  min-width: 250px;
-  padding: 0 10px;
-  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.project-title {
-  font-size: clamp(1.1rem, 2vw, 1.6rem);
-  font-weight: 600;
-  margin-bottom: 8px;
+/* ===== META ROW ===== */
+.project-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.project-description {
-  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
-  color: #ddd;
-  line-height: 1.6;
-  margin-bottom: 12px;
+.project-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 0.5px solid #2a2a2a;
+  border-radius: 4px;
+  color: #555;
+  font-weight: 500;
 }
 
 .project-role {
-  font-size: clamp(0.8rem, 1vw, 0.9rem);
-  color: #ccc;
-  margin-bottom: 20px;
+  font-size: 12px;
+  color: #444;
+  font-style: italic;
 }
 
-/* === Tech Stack === */
-.tech-stack h4 {
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: #aaa;
+/* ===== TEXT ===== */
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: #f0ece4;
+  line-height: 1.2;
+  margin: 0;
 }
 
-.tech-list {
+.project-description {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.75;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* ===== TECH STACK ===== */
+/* ===== TECH STACK ===== */
+.tech-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tech-stack-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.tech-stack-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 25px;
-  justify-content: flex-start;
+  gap: 6px;
 }
 
 .tech-item {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 5px 12px;
-  font-size: clamp(0.75rem, 1vw, 0.85rem);
-  color: #eee;
-  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 11px;
+  color: #c08a2e;
+  background: rgba(192, 138, 46, 0.08);
+  border: 0.5px solid rgba(192, 138, 46, 0.2);
+  padding: 3px 10px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  transition: background 0.2s ease;
 }
 
 .tech-item:hover {
-  background: #333;
-  transform: scale(1.05);
+  background: rgba(192, 138, 46, 0.15);
 }
 
-/* === Buttons === */
-.view {
+/* ===== BUTTONS ===== */
+.project-actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 5px;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 4px;
 }
 
-.view button {
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: clamp(0.75rem, 1vw, 0.9rem);
-  font-weight: 500;
-  display: flex;
+.btn {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 9px 18px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: 0.4s ease;
+  border: 0.5px solid;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  background: transparent;
 }
 
-.view button:hover {
-  background-color: black;
-  border: 1px solid white;
-  color: white;
+.btn-github {
+  border-color: #2a2a2a;
+  color: #888;
 }
 
-.view button:hover .icon {
-  animation: pulse 1s linear infinite;
+.btn-github:hover {
+  border-color: #f0ece4;
+  color: #f0ece4;
 }
 
-/* === Icon Animation === */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.btn-demo {
+  background: #c08a2e;
+  border-color: #c08a2e;
+  color: #0a0a0a;
+  font-weight: 600;
 }
 
-/* === RESPONSIVENESS === */
-
-/* Tablets & small laptops */
-@media (max-width: 1024px) {
-  .project-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .project-content {
-    padding: 0;
-  }
-
-  .tech-list,
-  .view {
-    justify-content: center;
-  }
+.btn-demo:hover {
+  background: #d4a040;
+  border-color: #d4a040;
 }
 
-/* Mobile devices */
+.btn-icon {
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* ===== FOOTER ===== */
+.projects-footer {
+  text-align: center;
+  margin-top: 64px;
+}
+
+.projects-more {
+  font-size: 12px;
+  color: #333;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.projects-more:hover {
+  color: #c08a2e;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .projects-section {
-    padding: 40px 4%;
+    padding: 56px 5%;
   }
 
-  .project-image img {
-    max-width: 160px;
+  .project-card {
+    grid-template-columns: 44px 1fr;
+    padding: 32px 0;
   }
 
   .project-title {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
   .project-description {
-    font-size: 0.85rem;
+    font-size: 13px;
   }
 
-  .tech-item {
-    font-size: 0.75rem;
-    padding: 5px 10px;
-  }
-
-  .view button {
-    font-size: 0.75rem;
-    padding: 6px 10px;
+  .btn {
+    font-size: 11px;
+    padding: 8px 14px;
   }
 }
 
-/* Smallest phones */
 @media (max-width: 380px) {
   .project-card {
-    padding: 15px;
-    gap: 10px;
+    grid-template-columns: 36px 1fr;
   }
 
-  .project-image img {
-    max-width: 130px;
-  }
-
-  .project-title {
-    font-size: 1rem;
-  }
-
-  .project-description {
-    font-size: 0.75rem;
-  }
-
-  .view button {
-    font-size: 0.7rem;
+  .project-number {
+    font-size: 10px;
   }
 }

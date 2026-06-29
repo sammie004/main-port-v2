@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
 import '../css/SkillsSection.css'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-// use effect for animation
 
 const skills = [
   { name: 'HTML', level: 95 },
@@ -14,7 +10,6 @@ const skills = [
   { name: 'UI/UX Design', level: 88 }
 ]
 
-// ✅ Tech logos for the Tech Stack section
 const techLogos = [
   {
     name: 'HTML5',
@@ -48,28 +43,20 @@ const techLogos = [
 
 function SkillGauge ({ skill, level, trigger }) {
   const [progress, setProgress] = useState(0)
+
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      mirror: false,
-      easing: 'ease-in-out',
-      once: true
-    })
-  })
-  useEffect(() => {
-    if (trigger) {
-      let start = 0
-      const step = () => {
-        start += 2
-        if (start <= level) {
-          setProgress(start)
-          requestAnimationFrame(step)
-        } else {
-          setProgress(level)
-        }
+    if (!trigger) return
+    let start = 0
+    const step = () => {
+      start += 2
+      if (start <= level) {
+        setProgress(start)
+        requestAnimationFrame(step)
+      } else {
+        setProgress(level)
       }
-      requestAnimationFrame(step)
     }
+    requestAnimationFrame(step)
   }, [trigger, level])
 
   return (
@@ -126,7 +113,8 @@ export default function SkillsSection () {
 
   return (
     <div className='skills-page'>
-      <h1 className='skills-title'>My Skills</h1>
+      <span className='skills-eyebrow'>// skills.config.js</span>
+      <h2 className='skills-title'>My Skills</h2>
       <p className='skills-subtitle'>
         A visual overview of my technical strengths.
       </p>
@@ -147,9 +135,11 @@ export default function SkillsSection () {
         ))}
       </div>
 
-      {/* ✅ Tech Stack and Tools Section */}
+      {/* Tech Stack and Tools */}
       <div className='tech-stack'>
-        <h2>Tech Stack & Tools</h2>
+        <h3 className='tech-stack__title'>
+          <span className='tok-kw'>const</span> techStack
+        </h3>
         <div className='tech-logos' data-aos='zoom-in-up'>
           {techLogos.map(logo => (
             <div key={logo.name} className='tech-logo'>
