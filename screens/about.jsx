@@ -20,11 +20,11 @@ const About = () => {
           <span className='profile-side__tag'>// profile.json</span>
           <ProfileCard
             name='Ndih Samuel'
-            title='Software Engineer'
-            handle='d3v'
+            title='Software Engineer @ Remita'
+            handle='that_d3v'
             status='Active'
             contactText='$ contact --me'
-            avatarUrl='/path/to/avatar.jpg'
+            avatarUrl='https://res.cloudinary.com/dugd9t1q4/image/upload/fl_preserve_transparency/v1782742434/avatar-removebg-preview_lwbpxd.jpg?_s=public-apps'
             showUserInfo={true}
             enableTilt={true}
             enableMobileTilt={false}
@@ -47,7 +47,7 @@ const About = () => {
             {/* Body: line numbers + code */}
             <div className='code-window__body'>
               <div className='code-window__gutter' aria-hidden='true'>
-                {Array.from({ length: 16 }, (_, i) => (
+                {Array.from({ length: 19 }, (_, i) => (
                   <span key={i} className='line-num'>{String(i + 1).padStart(2, '0')}</span>
                 ))}
               </div>
@@ -74,10 +74,45 @@ const About = () => {
                 </p>
 
                 <p className='cl'>
+                  &nbsp;&nbsp;<span className='tok-type'>company</span>
+                  <span className='tok-punct'>:</span>{' '}
+                  <span className='tok-str'>"Remita"</span>
+                  <span className='tok-punct'>,</span>
+                </p>
+
+                <p className='cl'>
+                  &nbsp;&nbsp;<span className='tok-type'>location</span>
+                  <span className='tok-punct'>:</span>{' '}
+                  <span className='tok-str'>"Lagos, Nigeria"</span>
+                  <span className='tok-punct'>,</span>
+                </p>
+
+                <p className='cl'>
+                  &nbsp;&nbsp;<span className='tok-type'>experience</span>
+                  <span className='tok-punct'>:</span>{' '}
+                  <span className='tok-str'>"3+ years"</span>
+                  <span className='tok-punct'>,</span>
+                </p>
+
+                <p className='cl'>
                   &nbsp;&nbsp;<span className='tok-type'>stack</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  {['React', 'Node.js', 'MySQL', 'Figma'].map((t, i, arr) => (
+                  {['React', 'Node.js', 'Java/Spring Boot', 'PHP', 'MySQL'].map((t, i, arr) => (
+                    <span key={t}>
+                      <span className='tok-str'>"{t}"</span>
+                      {i < arr.length - 1 && <span className='tok-punct'>, </span>}
+                    </span>
+                  ))}
+                  <span className='tok-punct'>]</span>
+                  <span className='tok-punct'>,</span>
+                </p>
+
+                <p className='cl'>
+                  &nbsp;&nbsp;<span className='tok-type'>expertise</span>
+                  <span className='tok-punct'>:</span>{' '}
+                  <span className='tok-punct'>[</span>
+                  {['Backend Engineering', 'API Design', 'Payment Systems', 'SDK Development'].map((t, i, arr) => (
                     <span key={t}>
                       <span className='tok-str'>"{t}"</span>
                       {i < arr.length - 1 && <span className='tok-punct'>, </span>}
@@ -95,9 +130,10 @@ const About = () => {
 
                 <p className='cl cl--prose'>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  Passionate about building clean, functional, and
-                  user-centered web applications. I ship full-stack
-                  products and lead design systems end-to-end.
+                  Full-stack engineer with a strong backend focus — I build
+                  SDKs, REST APIs, and payment integrations for fintech
+                  products, and I care just as much about the UI/UX on top
+                  of them as the code underneath.
                 </p>
 
                 <p className='cl'>
@@ -109,7 +145,9 @@ const About = () => {
                   &nbsp;&nbsp;<span className='tok-type'>projects</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  <span className='tok-str'>"Result Upload System"</span>
+                  <span className='tok-str'>"Zoho Billing SDK"</span>
+                  <span className='tok-punct'>, </span>
+                  <span className='tok-str'>"Reset KYC Platform"</span>
                   <span className='tok-punct'>, </span>
                   <span className='tok-str'>"Ecobin"</span>
                   <span className='tok-punct'>, ...]</span>
@@ -117,14 +155,15 @@ const About = () => {
                 </p>
 
                 <p className='cl'>
-                  &nbsp;&nbsp;<span className='tok-type'>interests</span>
+                  &nbsp;&nbsp;<span className='tok-type'>industries</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  <span className='tok-str'>"teaching"</span>
-                  <span className='tok-punct'>, </span>
-                  <span className='tok-str'>"UI/UX"</span>
-                  <span className='tok-punct'>, </span>
-                  <span className='tok-str'>"open source"</span>
+                  {['FinTech', 'Education', 'Enterprise Software'].map((t, i, arr) => (
+                    <span key={t}>
+                      <span className='tok-str'>"{t}"</span>
+                      {i < arr.length - 1 && <span className='tok-punct'>, </span>}
+                    </span>
+                  ))}
                   <span className='tok-punct'>]</span>
                   <span className='tok-punct'>,</span>
                 </p>
