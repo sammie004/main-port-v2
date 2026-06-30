@@ -47,7 +47,7 @@ const About = () => {
             {/* Body: line numbers + code */}
             <div className='code-window__body'>
               <div className='code-window__gutter' aria-hidden='true'>
-                {Array.from({ length: 19 }, (_, i) => (
+                {Array.from({ length: 22 }, (_, i) => (
                   <span key={i} className='line-num'>{String(i + 1).padStart(2, '0')}</span>
                 ))}
               </div>
@@ -90,7 +90,7 @@ const About = () => {
                 <p className='cl'>
                   &nbsp;&nbsp;<span className='tok-type'>experience</span>
                   <span className='tok-punct'>:</span>{' '}
-                  <span className='tok-str'>"3+ years"</span>
+                  <span className='tok-str'>"2+ years"</span>
                   <span className='tok-punct'>,</span>
                 </p>
 
@@ -98,7 +98,7 @@ const About = () => {
                   &nbsp;&nbsp;<span className='tok-type'>stack</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  {['React', 'Node.js', 'Java/Spring Boot', 'PHP', 'MySQL'].map((t, i, arr) => (
+                  {['React', 'Node.js', 'Java/Spring Boot', 'PHP', 'MySQL','HTML/CSS'].map((t, i, arr) => (
                     <span key={t}>
                       <span className='tok-str'>"{t}"</span>
                       {i < arr.length - 1 && <span className='tok-punct'>, </span>}
@@ -123,6 +123,20 @@ const About = () => {
                 </p>
 
                 <p className='cl'>
+                  &nbsp;&nbsp;<span className='tok-type'>mindset</span>
+                  <span className='tok-punct'>:</span>{' '}
+                  <span className='tok-punct'>[</span>
+                  {['clarity over cleverness', 'systems thinking', 'maintainability first'].map((t, i, arr) => (
+                    <span key={t}>
+                      <span className='tok-str'>"{t}"</span>
+                      {i < arr.length - 1 && <span className='tok-punct'>, </span>}
+                    </span>
+                  ))}
+                  <span className='tok-punct'>]</span>
+                  <span className='tok-punct'>,</span>
+                </p>
+
+                <p className='cl'>
                   &nbsp;&nbsp;<span className='tok-type'>bio</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-str'>`</span>
@@ -130,10 +144,13 @@ const About = () => {
 
                 <p className='cl cl--prose'>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  Full-stack engineer with a strong backend focus — I build
-                  SDKs, REST APIs, and payment integrations for fintech
-                  products, and I care just as much about the UI/UX on top
-                  of them as the code underneath.
+                  Backend engineer by calling, frontend dev by necessity, and
+                  UI/UX designer when nobody else will. I build APIs, payment
+                  systems, and SDKs — then obsess over why the button looks
+                  slightly off. I write code that's meant to be maintained by
+                  humans (including future me, who will have no memory of this).
+                  I debug with patience, deploy with prayer, and somehow it
+                  always works in production. Mostly.
                 </p>
 
                 <p className='cl'>
@@ -145,11 +162,11 @@ const About = () => {
                   &nbsp;&nbsp;<span className='tok-type'>projects</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  <span className='tok-str'>"Zoho Billing SDK"</span>
+                  <span className='tok-str'>"RUAS (yes, it automates things)"</span>
                   <span className='tok-punct'>, </span>
-                  <span className='tok-str'>"Reset KYC Platform"</span>
+                  <span className='tok-str'>"Event Mgmt Sys (nobody showed up to test it)"</span>
                   <span className='tok-punct'>, </span>
-                  <span className='tok-str'>"Ecobin"</span>
+                  <span className='tok-str'>"Zoho Billing SDK (money stuff, handled)"</span>
                   <span className='tok-punct'>, ...]</span>
                   <span className='tok-punct'>,</span>
                 </p>
@@ -182,7 +199,7 @@ const About = () => {
                 <p className='cl'>&nbsp;</p>
 
                 <p className='cl cl--comment'>
-                  {'// "Let\'s build something meaningful — one line at a time."'}
+                  {'// "I write clean code. Git blame says otherwise."'}
                 </p>
 
                 <p className='cl'>&nbsp;</p>

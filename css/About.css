@@ -102,8 +102,23 @@
   border-radius: 50%;
   background: #fb923c;
   flex-shrink: 0;
+  animation: pulse 1.3s ease-in-out infinite;
 }
-
+.code-window__tab-dot:hover{
+  animation: none;
+  background: #fbff00;
+}
+@keyframes pulse {
+  0%{
+    opacity: 0.4;
+  }
+  50%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 0.4;
+  }
+}
 /* Body: gutter + code side by side */
 .code-window__body {
   display: flex;
