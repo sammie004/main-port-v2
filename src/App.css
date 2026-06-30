@@ -172,6 +172,13 @@ body {
 }
 
 /* ============================================================
+   BOTTOM PILL NAV — mobile only, hidden on desktop
+   ============================================================ */
+.pill-nav {
+  display: none;
+}
+
+/* ============================================================
    HERO
    padding-top accounts for the fixed nav (56px) + the ticker
    bar pinned directly beneath it (32px).
@@ -551,7 +558,87 @@ body {
 }
 
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  /* Hide top nav, show pill nav */
+  .site-nav { display: none; }
+
+  /* Extra bottom padding so content clears the pill */
+  .app { padding-bottom: 5rem; }
+
+  /* ── Pill Nav ── */
+  .pill-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(255,255,255,0.04) inset;
+  }
+
+  /* Light theme glass */
+  html[data-theme='light'] .pill-nav {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(255,255,255,0.6) inset;
+  }
+
+  .pill-nav__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    color: var(--muted);
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .pill-nav__item:hover {
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .pill-nav__item--active {
+    color: var(--accent);
+    background: var(--accent-dim);
+    box-shadow: 0 0 0 1px var(--accent-border);
+  }
+
+  /* Divider before theme toggle */
+  .pill-nav__theme {
+    font-size: 1rem;
+    margin-left: 0.15rem;
+    padding-left: 0.15rem;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+    width: auto;
+    padding: 0 0.6rem;
+    height: 1.6rem;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+
   .hero__typewriter { font-size: 0.64rem; }
   .hero__scroll-label { font-size: 0.85rem; }
   .hero__name { font-size: clamp(2.2rem, 10vw, 3.5rem); }

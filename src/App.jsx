@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { FaUser, FaCode, FaDiagramProject, FaEnvelope } from 'react-icons/fa6'
 import TextType from '../components/type'
 import About from '../screens/about'
 import SkillsSection from '../screens/skills'
@@ -6,12 +7,14 @@ import DotGrid from '../components/dotgrid'
 import ProjectsSection from '../screens/projects'
 import ContactSection from '../screens/contact'
 import './App.css'
+import { FaHome } from 'react-icons/fa'
 
 const NAV_LINKS = [
-  { label: 'about()',     href: '#about'    },
-  { label: 'skills[]',   href: '#skills'   },
-  { label: 'projects{}', href: '#projects' },
-  { label: 'contact()',  href: '#contact'  },
+  { label: 'Home</>', href:'#home', icon:<FaHome/>},
+  { label: 'about()',     href: '#about',    icon: <FaUser />           },
+  { label: 'skills[]',   href: '#skills',   icon: <FaCode />           },
+  { label: 'projects{}', href: '#projects', icon: <FaDiagramProject /> },
+  { label: 'contact()',  href: '#contact',  icon: <FaEnvelope />       }
 ]
 
 const CHIPS = [
@@ -52,8 +55,9 @@ const TICKER_ITEMS = [
 ]
 
 export default function App () {
-  const [theme, setTheme]       = useState('dark')
-  const [scrolled, setScrolled] = useState(false)
+  const [theme, setTheme]           = useState('dark')
+  const [scrolled, setScrolled]     = useState(false)
+  const [activeHash, setActiveHash] = useState('#about')
 
   /* Apply theme attribute to <html> — every CSS var picks it up */
   useEffect(() => {
@@ -67,12 +71,27 @@ export default function App () {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  /* Track active section for pill nav highlight */
+  useEffect(() => {
+    const sections = NAV_LINKS.map(l => document.querySelector(l.href))
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActiveHash(`#${e.target.id}`)
+        })
+      },
+      { threshold: 0.4 }
+    )
+    sections.forEach(s => s && observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
+
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
 
   return (
     <div className='app'>
 
-      {/* ── Navbar ── */}
+      {/* ── Navbar (desktop only) ── */}
       <nav className={`site-nav${scrolled ? ' site-nav--scrolled' : ''}`}>
         <span className='nav-logo'>
           ndih<span className='nav-logo__dot'>_</span>samuel
@@ -96,6 +115,27 @@ export default function App () {
           </button>
           <a className='nav-cta' href='#contact'>$ hire --me</a>
         </div>
+      </nav>
+
+      {/* ── Bottom Pill Nav (mobile only) ── */}
+      <nav className='pill-nav' aria-label='Mobile navigation'>
+        {NAV_LINKS.map(({ href, icon, label }) => (
+          <a
+            key={href}
+            href={href}
+            className={`pill-nav__item${activeHash === href ? ' pill-nav__item--active' : ''}`}
+            aria-label={label}
+          >
+            {icon}
+          </a>
+        ))}
+        <button
+          className='pill-nav__item pill-nav__theme'
+          onClick={toggleTheme}
+          aria-label='Toggle theme'
+        >
+          {theme === 'dark' ? '☀' : '☽'}
+        </button>
       </nav>
 
       {/* ── Hero ── */}
