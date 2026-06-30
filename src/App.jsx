@@ -214,7 +214,7 @@ export default function App () {
           </div>
         </aside>
 
-        <span className='hero__location'>// Lagos, NG · open to remote</span>
+        <span className='hero__location'><span><FaHome /></span> Lagos, NG · open to remote</span>
 
         <div className='hero__scroll' aria-hidden='true'>
           {/* <span className='hero__scroll-line' /> */}
