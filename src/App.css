@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 
 /* ============================================================
    THEME TOKENS — on <html> so every descendant reads them
@@ -91,7 +91,7 @@ body {
 }
 
 .nav-logo {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--fg);
@@ -110,7 +110,7 @@ body {
 }
 
 .nav-link {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   color: var(--muted);
@@ -152,7 +152,7 @@ body {
 
 /* Hire CTA */
 .nav-cta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.63rem;
   letter-spacing: 0.07em;
   padding: 7px 16px;
@@ -225,7 +225,7 @@ body {
 
 .hero__ticker-item {
   position: relative;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.6rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -267,7 +267,7 @@ body {
 
 /* "availability" pill */
 .hero__tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.07em;
   color: var(--accent);
@@ -292,7 +292,7 @@ body {
 
 /* Name */
 .hero__name {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: clamp(2.6rem, 7vw, 5.5rem);
   font-weight: 700;
   color: var(--fg);
@@ -310,7 +310,7 @@ body {
    No matter how long or short the string, the box never resizes.
    ============================================================ */
 .hero__typewriter {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: clamp(0.85rem, 2vw, 1.25rem)  !important;
   color: var(--muted);
   font-weight: 400;
@@ -347,7 +347,7 @@ body {
 }
 
 .chip {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.63rem;
   letter-spacing: 0.05em;
   padding: 5px 12px;
@@ -374,7 +374,7 @@ body {
    SHARED BUTTONS
    ============================================================ */
 .btn {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.68rem;
   letter-spacing: 0.05em;
   padding: 11px 24px;
@@ -428,7 +428,7 @@ body {
 }
 
 .stat__n {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 2rem;
   font-weight: 700;
   color: var(--fg);
@@ -440,7 +440,7 @@ body {
 .stat__n span { color: var(--accent); }
 
 .stat__l {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.58rem;
   color: var(--muted);
   letter-spacing: 0.09em;
@@ -452,7 +452,7 @@ body {
   position: absolute;
   bottom: 28px;
   left: 5%;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 0.58rem;
   color: var(--dim);
   letter-spacing: 0.09em;
@@ -495,7 +495,7 @@ body {
 }
 
 .hero__scroll-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 1rem;
   color: var(--dim);
   letter-spacing: 0.16em;

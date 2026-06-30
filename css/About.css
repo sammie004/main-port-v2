@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 
 /* ============================================================
    SR-ONLY
@@ -53,7 +53,7 @@
 }
 
 .profile-side__tag {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   color: var(--dim, #222);
   letter-spacing: 0.06em;
@@ -87,7 +87,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   color: var(--fg, #ededed);
   padding: 11px 16px;
@@ -137,7 +137,7 @@
 }
 
 .line-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   color: #1e1e28;
   line-height: 1.85;
@@ -154,7 +154,7 @@
    CODE LINE STYLES
    ============================================================ */
 .cl {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 13px;
   line-height: 1.85;
   color: rgba(237, 237, 237, 0.35);
