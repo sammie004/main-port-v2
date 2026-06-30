@@ -90,7 +90,7 @@ const About = () => {
                 <p className='cl'>
                   &nbsp;&nbsp;<span className='tok-type'>experience</span>
                   <span className='tok-punct'>:</span>{' '}
-                  <span className='tok-str'>"2+ years"</span>
+                  <span className='tok-str'>"3+ years"</span>
                   <span className='tok-punct'>,</span>
                 </p>
 
@@ -98,7 +98,7 @@ const About = () => {
                   &nbsp;&nbsp;<span className='tok-type'>stack</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  {['React', 'Node.js', 'Java/Spring Boot', 'PHP', 'MySQL','HTML/CSS'].map((t, i, arr) => (
+                  {['React', 'Node.js', 'Java/Spring Boot', 'PHP', 'MySQL'].map((t, i, arr) => (
                     <span key={t}>
                       <span className='tok-str'>"{t}"</span>
                       {i < arr.length - 1 && <span className='tok-punct'>, </span>}
@@ -162,11 +162,11 @@ const About = () => {
                   &nbsp;&nbsp;<span className='tok-type'>projects</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  <span className='tok-str'>"RUAS (yes, it automates things)"</span>
+                  <span className='tok-str'>"Result Upload Automation System"</span>
                   <span className='tok-punct'>, </span>
-                  <span className='tok-str'>"Event Mgmt Sys (nobody showed up to test it)"</span>
+                  <span className='tok-str'>"LAPO Bot"</span>
                   <span className='tok-punct'>, </span>
-                  <span className='tok-str'>"Zoho Billing SDK (money stuff, handled)"</span>
+                  <span className='tok-str'>"Ecobin"</span>
                   <span className='tok-punct'>, ...]</span>
                   <span className='tok-punct'>,</span>
                 </p>
@@ -175,7 +175,7 @@ const About = () => {
                   &nbsp;&nbsp;<span className='tok-type'>industries</span>
                   <span className='tok-punct'>:</span>{' '}
                   <span className='tok-punct'>[</span>
-                  {['FinTech', 'Education', 'Enterprise Software'].map((t, i, arr) => (
+                  {['FinTech', 'Enterprise Software','Ed-Tech','Health-tech'].map((t, i, arr) => (
                     <span key={t}>
                       <span className='tok-str'>"{t}"</span>
                       {i < arr.length - 1 && <span className='tok-punct'>, </span>}

@@ -11,19 +11,19 @@ const projects = [
     role: '// Developer',
     title: 'Result Upload Automation System',
     description:
-      'A web-based solution that replaces manual paperwork with digital approvals — automating the result upload and multi-step sign-off workflow for university administrators.',
-    tech: ['Node.js', 'MySQL', 'HTML/CSS', 'JavaScript'],
+      'A web-based platform that replaces manual paperwork with digital approvals — automating the result upload and multi-step sign-off workflow for university administrators. Built with role-based access control, document uploads, and a notification system end-to-end.',
+    tech: ['Node.js', 'Express.js', 'MySQL', 'HTML/CSS', 'JavaScript'],
     github: '#',
     demo: '#'
   },
   {
     number: '02',
-    tag: 'product / design',
-    role: '// PM & UI Designer',
-    title: 'Event Management System',
+    tag: 'automation / backend',
+    role: '// Backend Developer',
+    title: 'LAPO Bot',
     description:
-      'Oversaw design and planning for an event scheduling and attendee management platform — coordinating between design and development teams from concept through delivery.',
-    tech: ['Figma', 'UI/UX Design', 'HTML/CSS', 'JavaScript'],
+      'An internal automation bot built during my internship to streamline business processes and reduce repetitive manual tasks. Integrated with backend APIs and designed for conversational workflows that actually save time.',
+    tech: ['Backend API Integration', 'Process Automation', 'Conversational Workflow'],
     github: '#',
     demo: '#'
   },
@@ -35,6 +35,17 @@ const projects = [
     description:
       'Led concept development and system architecture for an IoT-inspired smart waste solution — from sensor logic to backend design — focused on scalable, sustainable infrastructure.',
     tech: ['Node.js', 'HTML/CSS', 'IoT Concepts'],
+    github: '#',
+    demo: '#'
+  },
+  {
+    number: '04',
+    tag: 'ui/ux design',
+    role: '// Product Designer',
+    title: 'Content Management System',
+    description:
+      'End-to-end UI/UX design for an enterprise content management platform — covering user flows, dashboard architecture, and interface design for teams managing content at scale.',
+    tech: ['Figma', 'UI/UX Design', 'User Flow', 'Dashboard Design'],
     github: '#',
     demo: '#'
   }

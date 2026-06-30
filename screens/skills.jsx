@@ -2,13 +2,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import '../css/SkillsSection.css'
 
 const skills = [
-  { name: 'HTML',        level: 95, label: 'expert'     },
-  { name: 'CSS',         level: 90, label: 'expert'     },
-  { name: 'JavaScript',  level: 85, label: 'advanced'   },
-  { name: 'React',       level: 80, label: 'advanced'   },
-  { name: 'Node.js',     level: 75, label: 'proficient' },
-  { name: 'UI/UX Design',level: 88, label: 'advanced'   },
-]
+  { name: 'HTML',         level: 90, label: 'Expert' },
+  { name: 'CSS',          level: 84, label: 'Advanced' },
+  { name: 'JavaScript',   level: 86, label: 'Advanced' },
+  { name: 'React',        level: 82, label: 'Advanced' },
+  { name: 'Node.js',      level: 85, label: 'Advanced' },
+  { name: 'Express.js',   level: 88, label: 'Advanced' },
+  { name: 'Spring Boot',  level: 78, label: 'Proficient' },
+  { name: 'Java',         level: 72, label: 'Proficient' },
+  { name: 'MySQL',        level: 84, label: 'Advanced' },
+  { name: 'REST APIs',    level: 89, label: 'Expert' },
+  { name: 'UI/UX Design', level: 88, label: 'Advanced' }
+];
 
 const techLogos = [
   { name: 'HTML5',       src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
