@@ -21,9 +21,10 @@ const CHIPS = [
   { label: 'React',       hi: true  },
   { label: 'Node.js',     hi: true  },
   { label: 'Ships Fast™', hi: true  },
-  { label: 'MySQL',       hi: false },
-  { label: 'Figma',       hi: false },
-  { label: 'TypeScript',  hi: false },
+  { label: 'MySQL',       hi: true },
+  { label: 'Figma',       hi: true },
+  { label: 'Spring Boot',  hi: true },
+  
 ]
 
 /* Status-bar ticker — the one loud element on an otherwise quiet page */
